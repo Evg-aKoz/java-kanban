@@ -19,9 +19,9 @@ public class TaskManager {
         allTasks.put(count, task);
     }
 
-    void updateTasks(Task task) {
-        if (allTasks.containsKey(task.getId())) {
-            allTasks.put(task.getId(), task);
+    void updateTasks(int idTask, Task task) {
+        if (allTasks.containsKey(idTask)) {
+            allTasks.put(idTask, task);
         }
     }
 
@@ -52,9 +52,9 @@ public class TaskManager {
         allSubTasks.put(count, subTask);
     }
 
-    void updateSubTasks(SubTask subTask) {
-        if (allSubTasks.containsKey(subTask.getId())) {
-            allSubTasks.put(subTask.getId(), subTask);
+    void updateSubTasks(int idSubTask, SubTask subTask) {
+        if (allSubTasks.containsKey(idSubTask)) {
+            allSubTasks.put(idSubTask, subTask);
         }
     }
 
@@ -86,10 +86,10 @@ public class TaskManager {
         allEpics.put(count, epic);
     }
 
-    void updateEpics (Epic epic) {
-        if (allEpics.containsKey(epic.getId())) {
+    void updateEpics (int idEpic, Epic epic) {
+        if (allEpics.containsKey(idEpic)) {
             updateStatusEpic(epic);
-            allEpics.put(epic.getId(),epic);
+            allEpics.put(idEpic,epic);
         }
     }
 
