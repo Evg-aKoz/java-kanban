@@ -1,13 +1,14 @@
+package tasks;
+
 import java.util.ArrayList;
 
 public class Epic extends Task {
 
-ArrayList <SubTask> subTasks;
+protected  ArrayList <SubTask> subTasks;
 
-    public Epic(String nameTask, String descriptionTask, Status status, ArrayList<SubTask> subTasks) {
-        super(nameTask, descriptionTask, status);
+    public Epic(String nameTask, String descriptionTask, Status status, int idTask, ArrayList<SubTask> subTasks) {
+        super(nameTask, descriptionTask, status, idTask);
         this.subTasks = subTasks;
-        subTasks = new ArrayList<>();
     }
 
     public ArrayList<SubTask> getSubTasks() {
@@ -17,6 +18,7 @@ ArrayList <SubTask> subTasks;
     public void setSubTasks(ArrayList<SubTask> subTasks) {
         this.subTasks = subTasks;
     }
+
 
     @Override
     public Status getStatus() {
@@ -29,14 +31,12 @@ ArrayList <SubTask> subTasks;
     }
 
     @Override
-        public int getId() {
-            return ++id;
-        }
+    public int getIdTask() {
+        return super.getIdTask();
+    }
 
     @Override
-    public String toString() {
-        return "Epic{" +
-                "subTasks=" + subTasks +
-                "} " + super.toString();
+    public void setIdTask(int idTask) {
+        super.setIdTask(idTask);
     }
 }
