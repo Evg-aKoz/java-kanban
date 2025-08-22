@@ -36,4 +36,11 @@ public class SubTask extends Task {
     public void setIdEpic(int idEpic) {
         this.idEpic = idEpic;
     }
+
+    @Override
+    public String toString() {
+        return "SubTask{" +
+                "idEpic=" + idEpic +
+                "} " + super.toString();
+    }
 }

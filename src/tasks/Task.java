@@ -59,6 +59,16 @@ public class Task {
     public int hashCode() {
         return Objects.hashCode(idTask);
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "nameTask='" + nameTask + '\'' +
+                ", descriptionTask='" + descriptionTask + '\'' +
+                ", status=" + status +
+                ", idTask=" + idTask +
+                '}';
+    }
 }
 
 
