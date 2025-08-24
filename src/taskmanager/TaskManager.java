@@ -21,39 +21,19 @@ public class TaskManager {
     }
 
     public ArrayList<Task> getTasks() {
-        ArrayList<Task> allTasks = new ArrayList<>();
-        for (Task task : tasks.values()) {
-            allTasks.add(task);
-        }
-      return allTasks;
+        return new ArrayList<>(tasks.values());
     }
 
     public ArrayList<SubTask> getSubTasks() {
-        ArrayList<SubTask> allSubTasks = new ArrayList<>();
-        for (SubTask subTask : subTasks.values()) {
-            allSubTasks.add(subTask);
-        }
-        return allSubTasks;
+        return new ArrayList<>(subTasks.values());
     }
 
     public ArrayList<Epic> getEpics() {
-        ArrayList<Epic> allEpics = new ArrayList<>();
-        for (Epic epic : epics.values()) {
-            allEpics.add(epic);
-        }
-        return allEpics;
+        return new ArrayList<>(epics.values());
     }
 
     public ArrayList<SubTask> getSubTasksByIdEpic (int idEpic) {
-        ArrayList<SubTask> subTasksByIdEpic = new ArrayList<>();
-            for (SubTask subtask : (epics.get(idEpic)).getSubTasks()) {
-                subTasksByIdEpic.add(subtask);
-            }
-        return subTasksByIdEpic;
-    }
-
-    public Epic getEicById (int idEpic) {
-        return epics.get(idEpic);
+        return new ArrayList<>((epics.get(idEpic)).getSubTasks());
     }
 
     public Task getTaskById (int idTask) {
@@ -64,10 +44,13 @@ public class TaskManager {
         return subTasks.get(idSubTask);
     }
 
-    //в таск оставла статус нью, как поняла по ТЗ при добавлении задачи он должен быть нью
-    //если так не должно быть могу его убрать. Переделать, чтобы статуса не было в конструкторе у меня не получилось пока
+    public Epic getEicById (int idEpic) {
+        return epics.get(idEpic);
+    }
+
+    //удалила статус при добавлении задачи (хотя может если задачу добавляют, то статус должен быть
+    // NEW, а не какой введет пользователь. А по updateTask пойдет обновление статуса)
     public void addTask(Task task) {
-        task.setStatus(Status.NEW);
         task.setIdTask(getId());
         tasks.put(task.getIdTask(), task);
     }
@@ -109,17 +92,14 @@ public class TaskManager {
     }
 
     public void updateEpic (Epic epic) {
-        if (epics.containsKey(getId())) {
-            epics.put(getId(),epic);
+        if (epics.containsKey(epic.getIdTask())) {
+            epics.put(epic.getIdTask(), epic);
         }
     }
 
+
     public void removeAllTasks() {
         tasks.clear();
-    }
-
-    public void removeTaskById(int idTask) {
-            tasks.remove(idTask);
     }
 
   public void removeAllSubTasks() {
@@ -130,14 +110,6 @@ public class TaskManager {
       subTasks.clear();
   }
 
-    public void removeSubTaskById(int idSubTask) {
-        SubTask subtask = subTasks.get(idSubTask);
-        Epic epic = epics.get(subtask.getIdEpic());
-        epic.getSubTasks().remove(subtask);
-        updateStatusEpic(epic);
-        subTasks.remove(idSubTask);
-    }
-
     public void removeAllEpics() {
         for (Epic epic : epics.values()) {
             for (SubTask subtask : epic.getSubTasks()) {
@@ -145,6 +117,18 @@ public class TaskManager {
             }
         }
         epics.clear();
+    }
+
+    public void removeTaskById(int idTask) {
+        tasks.remove(idTask);
+    }
+
+    public void removeSubTaskById(int idSubTask) {
+        SubTask subtask = subTasks.get(idSubTask);
+        Epic epic = epics.get(subtask.getIdEpic());
+        epic.getSubTasks().remove(subtask);
+        updateStatusEpic(epic);
+        subTasks.remove(idSubTask);
     }
 
     public void removeEpicById (int idEpic) {

@@ -6,9 +6,8 @@ public class Epic extends Task {
 
 protected  ArrayList <SubTask> subTasks;
 
-// если по заданию эпик наследник класса Таск, то как мне из него убирать статус?
-    public Epic(String nameTask, String descriptionTask, Status status, int idTask, ArrayList<SubTask> subTasks) {
-        super(nameTask, descriptionTask, status, idTask);
+    public Epic(int idTask, String nameTask, String descriptionTask, ArrayList<SubTask> subTasks) {
+        super(idTask, nameTask, descriptionTask, Status.NEW);
         this.subTasks = subTasks;
     }
 

@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class Task {
 
+    protected int idTask;
     protected String nameTask;
     protected String descriptionTask;
     protected Status status;
-    protected int idTask;
 
-    public Task(String nameTask, String descriptionTask, Status status, int idTask) {
+    public Task(int idTask, String nameTask, String descriptionTask, Status status) {
+        this.idTask = idTask;
         this.nameTask = nameTask;
         this.descriptionTask = descriptionTask;
         this.status = status;
-        this.idTask = idTask;
     }
 
     public String getNameTask() {
@@ -63,10 +63,10 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "nameTask='" + nameTask + '\'' +
+                "idTask=" + idTask +
+                ", nameTask='" + nameTask + '\'' +
                 ", descriptionTask='" + descriptionTask + '\'' +
                 ", status=" + status +
-                ", idTask=" + idTask +
                 '}';
     }
 }
