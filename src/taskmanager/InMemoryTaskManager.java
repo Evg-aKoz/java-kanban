@@ -103,7 +103,7 @@ public class InMemoryTaskManager implements TaskManager {
         if (subTasks.containsKey(subTask.getIdTask())) {
             subTasks.put(subTask.getIdTask(), subTask);
             Epic updateEpic = epics.get(subTask.getIdEpic());
-            List <SubTask> updateSudTasks = updateEpic.getSubTasks();
+            List<SubTask> updateSudTasks = updateEpic.getSubTasks();
             for (int i = 0; i < updateSudTasks.toArray().length; i++) {
                if (updateSudTasks.get(i).getIdTask() == subTask.getIdTask()) {
                    updateSudTasks.set(i,subTask);
