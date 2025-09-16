@@ -64,4 +64,65 @@ class TaskTest {
         final Task savedTask = manager.getTaskById(1);
         assertNull(savedTask, "Задача осталась в списке.");
     }
+
+    @Test
+    public void addNewTaskAndSetName() {
+
+        manager.addTask(task1);
+        task1.setNameTask("Update Name");
+        task1.getNameTask();
+        final Task savedTask = manager.getTaskById(1);
+
+        assertEquals(task1, savedTask, "Названия задач не совпадают.");
+    }
+
+    @Test
+    public void addNewTaskAndSetDescriptionTask() {
+
+        manager.addTask(task1);
+        task1.setDescriptionTask("Update DescriptionTask");
+        final Task savedTask = manager.getTaskById(1);
+
+        assertEquals(task1, savedTask, "Описание задач не совпадают.");
+    }
+
+    @Test
+    public void addNewTaskAndSetNameNull() {
+
+        manager.addTask(task1);
+        final Task savedTask = manager.getTaskById(1);
+        task1.setNameTask(null);
+
+        assertEquals(task1, savedTask, "Названия задач не совпадают.");
+    }
+
+    @Test
+    public void addNewTaskAndSetNameEmpty() {
+
+        manager.addTask(task1);
+        final Task savedTask = manager.getTaskById(1);
+        task1.setNameTask("");
+
+        assertEquals(task1, savedTask, "Названия задач не совпадают.");
+    }
+
+    @Test
+    public void addNewTaskAndSetDescriptionTaskNull() {
+
+        manager.addTask(task1);
+        task1.setDescriptionTask(null);
+        final Task savedTask = manager.getTaskById(1);
+
+        assertEquals(task1, savedTask, "Описание задач не совпадают.");
+    }
+
+    @Test
+    public void addNewTaskAndSetDescriptionTaskEmpty() {
+
+        manager.addTask(task1);
+        task1.setDescriptionTask("");
+        final Task savedTask = manager.getTaskById(1);
+
+        assertEquals(task1, savedTask, "Описания задач не совпадают.");
+    }
 }

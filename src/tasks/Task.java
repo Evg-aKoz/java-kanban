@@ -21,7 +21,9 @@ public class Task {
     }
 
     public void setNameTask(String nameTask) {
-        this.nameTask = nameTask;
+        if (nameTask != null && !nameTask.isEmpty()) {
+            this.nameTask = nameTask;
+        }
     }
 
     public String getDescriptionTask() {
@@ -29,7 +31,9 @@ public class Task {
     }
 
     public void setDescriptionTask(String descriptionTask) {
-        this.descriptionTask = descriptionTask;
+        if (descriptionTask != null && !descriptionTask.isEmpty()) {
+            this.descriptionTask = descriptionTask;
+        }
     }
 
     public Status getStatus() {
