@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-      /* TaskManager manager = Managers.getDefault();
+     /* TaskManager manager = Managers.getDefault();
 
         Task task1 = new Task(4, "1111111", "11111", Status.DONE);
         Task task2 = new Task(5, "222222", "2222222", Status.DONE);
@@ -45,24 +45,21 @@ public class Main {
         manager.getTaskById(2);
         System.out.println("История:");
         for (Task task : manager.getHistory()) {
-         System.out.println(task);
-        }
-        manager.getTaskById(9);
-        System.out.println("История:");
-        for (Task task : manager.getHistory()) {
-            System.out.println(task);
+        System.out.println(task);
         }
 
+        manager.getTaskById(2);
         manager.getSubTaskById(5);
         manager.getSubTaskById(4);
         manager.getTaskById(2);
+        manager.removeTaskById(2);
         System.out.println("История:");
         for (Task task : manager.getHistory()) {
         System.out.println(task);
       }
 
         manager.getEicById(3);
-      System.out.println("История:");
+        System.out.println("История:");
         for (Task task : manager.getHistory()) {
             System.out.println(task);
         }

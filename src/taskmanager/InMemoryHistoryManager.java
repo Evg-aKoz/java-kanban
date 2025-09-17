@@ -32,7 +32,6 @@ public class InMemoryHistoryManager implements HistoryManager {
                 linkLast(task);
             } else {
                 removeNode(historyMap.get(task.getIdTask()));
-                historyMap.remove(task.getIdTask());
                 linkLast(task);
             }
         }
