@@ -20,9 +20,8 @@ class InMemoryHistoryManagerTest {
         task1 = new Task(1, "Test addNewTask1", "Test addNewTask description1", Status.NEW);
     }
 
-
     @Test
-    void addHistory() {
+    void addTask() {
 
         historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
@@ -31,33 +30,63 @@ class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void updateHistory() {
+    void orderOfAddTask() {
+
+        historyManager.add(task1);
+        Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        historyManager.add(task2);
+        final List<Task> history = historyManager.getHistory();
+        assertEquals(task1, history.get(0), "Первая задача не в начале списка");
+        assertEquals(task2, history.get(1), "Последняя задача не в конце списка");
+    }
+
+    @Test
+    void updateHistoryById() {
+
         historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
         assertEquals(task1, history.getFirst(), "Задачи не совпадают.");
         task1 = new Task(1, "Test addNewTask1", "Test addNewTask description1", Status.IN_PROGRESS);
         historyManager.add(task1);
         final List<Task> newHistory = historyManager.getHistory();
-        assertEquals(newHistory.get(0), history.getFirst(), "Задачи не совпадают.");
-        assertEquals(task1, newHistory.get(1), "Задачи не совпадают.");
+        assertEquals(newHistory.getFirst(), history.getFirst(), "Задачи не совпадают.");
+        assertEquals(task1, newHistory.getFirst(), "Задачи не совпадают.");
     }
 
     @Test
-    void sizeHistoryMax10() {
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
-        historyManager.add(task1);
+    void orderOfUpdatingHistoryIfIdEquals() {
+
         historyManager.add(task1);
         Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
         historyManager.add(task2);
+        historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
-        assertEquals(10, history.size(), "Добавлено больше 10 задач");
-        assertEquals(task2, history.get(9), "Последняя задача не в конце списка");
+        assertEquals(task2, history.get(0), "Первая задача не в начале списка");
+        assertEquals(task1, history.get(1), "Последняя задача не в конце списка");
+        assertEquals(2, history.size(), "Задач больше чем истории");
+    }
+
+    @Test
+    void removeTaskById() {
+
+        historyManager.add(task1);
+        historyManager.remove(task1.getIdTask());
+        final List<Task> history = historyManager.getHistory();
+        assertEquals(0, history.size(), "После удаления задачи, история должна быть пустой.");
+    }
+
+    @Test
+    void orderOfUpdatingHistoryAfterRemoveTaskById() {
+
+        historyManager.add(task1);
+        Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        historyManager.add(task2);
+        Task task3 = new Task(3, "Test addNewTask3", "Test addNewTask description3", Status.IN_PROGRESS);
+        historyManager.add(task3);
+        historyManager.remove(task2.getIdTask());
+        final List<Task> history = historyManager.getHistory();
+        assertEquals(task1, history.get(0), "Первая задача не в начале списка");
+        assertEquals(task3, history.get(1), "Последняя задача не в конце списка");
+        assertEquals(2, history.size(), "Задач больше чем истории");
     }
 }

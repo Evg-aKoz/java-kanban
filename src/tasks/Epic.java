@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Epic extends Task {
 
-protected  List <SubTask> subTasks;
+protected  List<SubTask> subTasks;
 
     public Epic(int idTask, String nameTask, String descriptionTask, List<SubTask> subTasks) {
         super(idTask, nameTask, descriptionTask, Status.NEW);
