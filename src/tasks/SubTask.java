@@ -4,8 +4,8 @@ public class SubTask extends Task {
 
     protected int idEpic;
 
-    public SubTask(int idTask, String nameTask, String descriptionTask, Status status, int idEpic) {
-        super(idTask, nameTask, descriptionTask, status);
+    public SubTask(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status, int idEpic) {
+        super(idTask, TypeTask.SUBTASK, nameTask, descriptionTask, status);
         this.idEpic = idEpic;
     }
 
@@ -39,8 +39,7 @@ public class SubTask extends Task {
 
     @Override
     public String toString() {
-        return "SubTask{" +
-                "idEpic=" + idEpic +
-                "} " + super.toString();
+        return String.format("%d,%s,%s,%s,%s,%d\n",idTask, type, nameTask, descriptionTask, status, idEpic);
     }
 }
+
