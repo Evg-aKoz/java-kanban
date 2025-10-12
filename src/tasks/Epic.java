@@ -1,12 +1,14 @@
 package tasks;
 import java.util.List;
 
+import static tasks.TypeTask.EPIC;
+
 public class Epic extends Task {
 
     protected  List<SubTask> subTasks;
 
     public Epic(int idTask, TypeTask type, String nameTask, String descriptionTask, List<SubTask> subTasks) {
-        super(idTask, TypeTask.EPIC, nameTask, descriptionTask, Status.NEW);
+        super(idTask, type, nameTask, descriptionTask, Status.NEW);
         this.subTasks = subTasks;
     }
 
@@ -38,4 +40,13 @@ public class Epic extends Task {
         super.setIdTask(idTask);
     }
 
+    @Override
+    public TypeTask getType() {
+        return super.getType();
+    }
+
+    @Override
+    public void setType(TypeTask type) {
+        this.type = EPIC;
+    }
 }
