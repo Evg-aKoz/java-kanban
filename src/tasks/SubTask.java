@@ -1,13 +1,12 @@
 package tasks;
 
-import static tasks.TypeTask.SUBTASK;
-
 public class SubTask extends Task {
 
     protected int idEpic;
 
     public SubTask(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status, int idEpic) {
         super(idTask, type, nameTask, descriptionTask, status);
+        this.type = TypeTask.SUBTASK;
         this.idEpic = idEpic;
     }
 
@@ -29,16 +28,6 @@ public class SubTask extends Task {
     @Override
     public void setIdTask(int idTask) {
         super.setIdTask(idTask);
-    }
-
-    @Override
-    public TypeTask getType() {
-        return super.getType();
-    }
-
-    @Override
-    public void setType(TypeTask type) {
-        this.type = SUBTASK;
     }
 
     public int getIdEpic() {

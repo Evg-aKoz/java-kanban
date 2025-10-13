@@ -26,7 +26,7 @@ class SubTaskTest {
         subTask1 = new SubTask(7, SUBTASK, "Test addNewSubTask1", "Test addNewSubTask description1", Status.NEW, 7);
         subTask2 = new SubTask(2, SUBTASK, "Test addNewSubTask2", "Test addNewSubTask description2", Status.DONE, 1);
         subTasks1.add(subTask1);
-        epic1 = new Epic(9, EPIC, "Test addNewEpic1", "Test addNewEpic description1", subTasks1);
+        epic1 = new Epic(9, EPIC, "Test addNewEpic1", "Test addNewEpic description1", Status.DONE, subTasks1);
     }
 
     @Test

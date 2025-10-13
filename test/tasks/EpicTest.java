@@ -26,8 +26,8 @@ class EpicTest {
         ArrayList<SubTask> subTasks1 = new ArrayList<>();
         subTasks1.add(subTask1);
         subTasks1.add(subTask2);
-        epic1 = new Epic(9, EPIC,"Test addNewEpic1", "Test addNewEpic description1", subTasks1);
-        epic2 = new Epic(1, EPIC,"Test addNewEpic2", "Test addNewEpic description2", subTasks1);
+        epic1 = new Epic(9, EPIC,"Test addNewEpic1", "Test addNewEpic description1", Status.DONE, subTasks1);
+        epic2 = new Epic(1, EPIC,"Test addNewEpic2", "Test addNewEpic description2", Status.DONE, subTasks1);
     }
 
     @Test

@@ -2,8 +2,6 @@ package tasks;
 
 import java.util.Objects;
 
-import static tasks.TypeTask.TASK;
-
 public class Task {
 
     protected int idTask;
@@ -15,7 +13,7 @@ public class Task {
 
     public Task(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status) {
         this.idTask = idTask;
-        this.type = type;
+        this.type = TypeTask.TASK;
         this.nameTask = nameTask;
         this.descriptionTask = descriptionTask;
         this.status = status;
@@ -62,7 +60,7 @@ public class Task {
     }
 
     public void setType(TypeTask type) {
-        this.type = TASK;
+        this.type = type;
     }
 
     @Override
@@ -84,26 +82,36 @@ public class Task {
 
     public static Task fromString(String value) {
         String[] parts = value.split(",");
-        if (parts.length == 5) {
+        if (TypeTask.valueOf(parts[1]).equals(TypeTask.TASK)) {
             int idTask = Integer.parseInt(parts[0]);
             TypeTask type = TypeTask.valueOf(parts[1]);
             String nameTask = parts[2];
             String descriptionTask = parts[3];
             Status status = Status.valueOf(parts[4]);
             return new Task(idTask, type, nameTask, descriptionTask, status);
-        } else if (parts.length == 6) {
+        } else if (TypeTask.valueOf(parts[1]).equals(TypeTask.SUBTASK)) {
+                int idTask = Integer.parseInt(parts[0]);
+                TypeTask type = TypeTask.valueOf(parts[1]);
+                String nameTask = parts[2];
+                String descriptionTask = parts[3];
+                Status status = Status.valueOf(parts[4]);
+                int idEpic = Integer.parseInt(parts[5]);
+                return new SubTask(idTask, type, nameTask, descriptionTask, status, idEpic);
+        } else if (TypeTask.valueOf(parts[1]).equals(TypeTask.EPIC)) {
             int idTask = Integer.parseInt(parts[0]);
             TypeTask type = TypeTask.valueOf(parts[1]);
             String nameTask = parts[2];
             String descriptionTask = parts[3];
             Status status = Status.valueOf(parts[4]);
-            int idEpic = Integer.parseInt(parts[5]);
-            return new SubTask(idTask, type, nameTask, descriptionTask, status, idEpic);
+            return new Epic(idTask, type, nameTask, descriptionTask, status);
         } else {
             throw new IllegalArgumentException("Неверный формат строки");
         }
     }
 }
+
+
+
 
 
 
