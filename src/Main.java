@@ -15,7 +15,7 @@ import static tasks.TypeTask.*;*/
 public class Main {
 
     public static void main(String[] args) {
-       /* try {
+       /*try {
             File file = File.createTempFile("file", ".csv");
             System.out.println("Временный файл создан: " + file.getAbsolutePath());
         } catch (IOException e) {
@@ -24,8 +24,8 @@ public class Main {
 
         TaskManager manager = Managers.getDefault();
         FileBackedTaskManager fileManager = new FileBackedTaskManager(new File("file"));
-       SubTask subTask3 = new SubTask(7, SUBTASK, "SubTask3", "SubTask description3", Status.NEW, 7);
-        SubTask subTask4 = new SubTask(2, SUBTASK, "SubTask4", "SubTask description4", Status.NEW, 1);
+       SubTask subTask3 = new SubTask(7, EPIC, "SubTask3", "SubTask description3", Status.NEW, 7);
+        SubTask subTask4 = new SubTask(2, EPIC, "SubTask4", "SubTask description4", Status.NEW, 1);
         ArrayList<SubTask> subTasks2 = new ArrayList<>();
         subTasks2.add(subTask3);
         subTasks2.add(subTask4);

@@ -55,14 +55,6 @@ public class Task {
         this.idTask = idTask;
     }
 
-    public TypeTask getType() {
-        return type;
-    }
-
-    public void setType(TypeTask type) {
-        this.type = type;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
