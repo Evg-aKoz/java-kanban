@@ -2,6 +2,8 @@ package tasks;
 
 import java.util.Objects;
 
+import static tasks.TypeTask.TASK;
+
 public class Task {
 
     protected int idTask;
@@ -13,7 +15,7 @@ public class Task {
 
     public Task(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status) {
         this.idTask = idTask;
-        this.type = TypeTask.TASK;
+        this.type = TASK;
         this.nameTask = nameTask;
         this.descriptionTask = descriptionTask;
         this.status = status;
@@ -74,7 +76,7 @@ public class Task {
 
     public static Task fromString(String value) {
         String[] parts = value.split(",");
-        if (TypeTask.valueOf(parts[1]).equals(TypeTask.TASK)) {
+        if (TypeTask.valueOf(parts[1]).equals(TASK)) {
             int idTask = Integer.parseInt(parts[0]);
             TypeTask type = TypeTask.valueOf(parts[1]);
             String nameTask = parts[2];
