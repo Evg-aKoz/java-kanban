@@ -143,9 +143,11 @@ public class FileBackedTaskManager extends InMemoryTaskManager {
             }
             for (Task task : tasks.values()) {
                 value.write(task.toString());
-            } for (Epic epic : epics.values()) {
+            }
+            for (Epic epic : epics.values()) {
                 value.write(epic.toString());
-            } for (SubTask subTask : subTasks.values()) {
+            }
+            for (SubTask subTask : subTasks.values()) {
                 value.write(subTask.toString());
             }
         } catch (IOException e) {
