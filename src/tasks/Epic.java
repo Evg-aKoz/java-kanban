@@ -5,15 +5,13 @@ public class Epic extends Task {
 
     protected  List<SubTask> subTasks;
 
-    public Epic(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status, List<SubTask> subTasks) {
-        super(idTask, type, nameTask, descriptionTask, status);
-        this.type = TypeTask.EPIC;
+    public Epic(int idTask, String nameTask, String descriptionTask, Status status, List<SubTask> subTasks) {
+        super(idTask, nameTask, descriptionTask, status);
         this.subTasks = subTasks;
     }
 
-    public Epic(int idTask, TypeTask type, String nameTask, String descriptionTask, Status status) {
-        super(idTask, type, nameTask, descriptionTask, status);
-        this.type = TypeTask.EPIC;
+    public Epic(int idTask, String nameTask, String descriptionTask, Status status) {
+        super(idTask,  nameTask, descriptionTask, status);
     }
 
     public List<SubTask> getSubTasks() {
@@ -42,5 +40,10 @@ public class Epic extends Task {
     @Override
     public void setIdTask(int idTask) {
         super.setIdTask(idTask);
+    }
+
+    @Override
+    public TypeTask getType() {
+        return TypeTask.EPIC;
     }
 }

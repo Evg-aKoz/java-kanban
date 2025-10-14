@@ -8,7 +8,6 @@ import tasks.Task;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static tasks.TypeTask.TASK;
 
 class InMemoryHistoryManagerTest {
 
@@ -18,7 +17,7 @@ class InMemoryHistoryManagerTest {
 
     @BeforeEach
     public void beforeEach () {
-        task1 = new Task(1, TASK,"Test addNewTask1", "Test addNewTask description1", Status.NEW);
+        task1 = new Task(1, "Test addNewTask1", "Test addNewTask description1", Status.NEW);
     }
 
     @Test
@@ -34,7 +33,7 @@ class InMemoryHistoryManagerTest {
     void orderOfAddTask() {
 
         historyManager.add(task1);
-        Task task2 = new Task(2, TASK,"Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
         historyManager.add(task2);
         final List<Task> history = historyManager.getHistory();
         assertEquals(task1, history.get(0), "Первая задача не в начале списка");
@@ -47,7 +46,7 @@ class InMemoryHistoryManagerTest {
         historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
         assertEquals(task1, history.getFirst(), "Задачи не совпадают.");
-        task1 = new Task(1, TASK, "Test addNewTask1", "Test addNewTask description1", Status.IN_PROGRESS);
+        task1 = new Task(1,  "Test addNewTask1", "Test addNewTask description1", Status.IN_PROGRESS);
         historyManager.add(task1);
         final List<Task> newHistory = historyManager.getHistory();
         assertEquals(newHistory.getFirst(), history.getFirst(), "Задачи не совпадают.");
@@ -58,7 +57,7 @@ class InMemoryHistoryManagerTest {
     void orderOfUpdatingHistoryIfIdEquals() {
 
         historyManager.add(task1);
-        Task task2 = new Task(2,TASK, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
         historyManager.add(task2);
         historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
@@ -80,9 +79,9 @@ class InMemoryHistoryManagerTest {
     void orderOfUpdatingHistoryAfterRemoveTaskById() {
 
         historyManager.add(task1);
-        Task task2 = new Task(2, TASK,"Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        Task task2 = new Task(2,"Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
         historyManager.add(task2);
-        Task task3 = new Task(3, TASK, "Test addNewTask3", "Test addNewTask description3", Status.IN_PROGRESS);
+        Task task3 = new Task(3, "Test addNewTask3", "Test addNewTask description3", Status.IN_PROGRESS);
         historyManager.add(task3);
         historyManager.remove(task2.getIdTask());
         final List<Task> history = historyManager.getHistory();

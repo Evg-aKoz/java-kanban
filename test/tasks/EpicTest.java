@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static tasks.TypeTask.EPIC;
-import static tasks.TypeTask.SUBTASK;
 
 class EpicTest {
 
@@ -21,13 +19,13 @@ class EpicTest {
     @BeforeEach
     public void beforeEach() {
 
-        SubTask subTask1 = new SubTask(7, SUBTASK, "Test addNewSubTask1", "Test addNewSubTask description1", Status.NEW, 7);
-        SubTask subTask2 = new SubTask(55, SUBTASK, "Test addNewSubTask2", "Test addNewSubTask description2", Status.DONE, 9);
+        SubTask subTask1 = new SubTask(7,  "Test addNewSubTask1", "Test addNewSubTask description1", Status.NEW, 7);
+        SubTask subTask2 = new SubTask(55, "Test addNewSubTask2", "Test addNewSubTask description2", Status.DONE, 9);
         ArrayList<SubTask> subTasks1 = new ArrayList<>();
         subTasks1.add(subTask1);
         subTasks1.add(subTask2);
-        epic1 = new Epic(9, EPIC,"Test addNewEpic1", "Test addNewEpic description1", Status.DONE, subTasks1);
-        epic2 = new Epic(1, EPIC,"Test addNewEpic2", "Test addNewEpic description2", Status.DONE, subTasks1);
+        epic1 = new Epic(9, "Test addNewEpic1", "Test addNewEpic description1", Status.DONE, subTasks1);
+        epic2 = new Epic(1, "Test addNewEpic2", "Test addNewEpic description2", Status.DONE, subTasks1);
     }
 
     @Test

@@ -6,7 +6,6 @@ import tasks.Status;
 import tasks.Task;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static tasks.TypeTask.TASK;
 
 class InMemoryTaskManagerTest {
 
@@ -17,7 +16,7 @@ class InMemoryTaskManagerTest {
 
     @BeforeEach
     public void beforeEach () {
-        task1 = new Task(9, TASK, "Test addNewTask1", "Test addNewTask description1", Status.NEW);
+        task1 = new Task(9, "Test addNewTask1", "Test addNewTask description1", Status.NEW);
 
     }
 
