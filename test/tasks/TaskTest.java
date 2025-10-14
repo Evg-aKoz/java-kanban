@@ -17,7 +17,7 @@ class TaskTest {
 
     @BeforeEach
     public void beforeEach () {
-        task1 = new Task(9, "Test addNewTask1", "Test addNewTask description1", Status.NEW);
+        task1 = new Task(9,  "Test addNewTask1", "Test addNewTask description1", Status.NEW);
         task2 = new Task(1, "Test addNewTask2", "Test addNewTask description2", Status.NEW);
     }
 

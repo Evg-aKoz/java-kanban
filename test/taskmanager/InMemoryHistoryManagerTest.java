@@ -46,7 +46,7 @@ class InMemoryHistoryManagerTest {
         historyManager.add(task1);
         final List<Task> history = historyManager.getHistory();
         assertEquals(task1, history.getFirst(), "Задачи не совпадают.");
-        task1 = new Task(1, "Test addNewTask1", "Test addNewTask description1", Status.IN_PROGRESS);
+        task1 = new Task(1,  "Test addNewTask1", "Test addNewTask description1", Status.IN_PROGRESS);
         historyManager.add(task1);
         final List<Task> newHistory = historyManager.getHistory();
         assertEquals(newHistory.getFirst(), history.getFirst(), "Задачи не совпадают.");
@@ -79,7 +79,7 @@ class InMemoryHistoryManagerTest {
     void orderOfUpdatingHistoryAfterRemoveTaskById() {
 
         historyManager.add(task1);
-        Task task2 = new Task(2, "Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
+        Task task2 = new Task(2,"Test addNewTask2", "Test addNewTask description2", Status.IN_PROGRESS);
         historyManager.add(task2);
         Task task3 = new Task(3, "Test addNewTask3", "Test addNewTask description3", Status.IN_PROGRESS);
         historyManager.add(task3);

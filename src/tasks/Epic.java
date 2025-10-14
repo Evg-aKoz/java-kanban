@@ -3,11 +3,15 @@ import java.util.List;
 
 public class Epic extends Task {
 
-protected  List<SubTask> subTasks;
+    protected  List<SubTask> subTasks;
 
-    public Epic(int idTask, String nameTask, String descriptionTask, List<SubTask> subTasks) {
-        super(idTask, nameTask, descriptionTask, Status.NEW);
+    public Epic(int idTask, String nameTask, String descriptionTask, Status status, List<SubTask> subTasks) {
+        super(idTask, nameTask, descriptionTask, status);
         this.subTasks = subTasks;
+    }
+
+    public Epic(int idTask, String nameTask, String descriptionTask, Status status) {
+        super(idTask,  nameTask, descriptionTask, status);
     }
 
     public List<SubTask> getSubTasks() {
@@ -39,9 +43,7 @@ protected  List<SubTask> subTasks;
     }
 
     @Override
-    public String toString() {
-        return "Epic{" +
-                "subTasks=" + subTasks +
-                "} " + super.toString();
+    public TypeTask getType() {
+        return TypeTask.EPIC;
     }
 }

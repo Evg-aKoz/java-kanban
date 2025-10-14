@@ -1,86 +1,64 @@
-/*import taskmanager.*;
+/*import taskmanager.FileBackedTaskManager;
+import taskmanager.Managers;
+import taskmanager.TaskManager;
 import tasks.Epic;
 import tasks.Status;
 import tasks.SubTask;
 import tasks.Task;
-import java.util.ArrayList;*/
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static tasks.TypeTask.*;*/
 
 public class Main {
 
     public static void main(String[] args) {
+       /*try {
+            File file = File.createTempFile("file", ".csv");
+            System.out.println("Временный файл создан: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-     /* TaskManager manager = Managers.getDefault();
-
-        Task task1 = new Task(4, "1111111", "11111", Status.DONE);
-        Task task2 = new Task(5, "222222", "2222222", Status.DONE);
-        SubTask subTask1 = new SubTask(5, "ааа", "ааа", Status.NEW, 1);
-        SubTask subTask2 = new SubTask(4, "бббб", "бббб", Status.DONE, 5);
-        SubTask subTask3 = new SubTask(4, "ddd", "uuu", Status.DONE, 5);
-
+        TaskManager manager = Managers.getDefault();
+        FileBackedTaskManager fileManager = new FileBackedTaskManager(new File("file"));
+       SubTask subTask3 = new SubTask(7,  "SubTask3", "SubTask description3", Status.NEW, 7);
+        SubTask subTask4 = new SubTask(2,  "SubTask4", "SubTask description4", Status.NEW, 1);
+        ArrayList<SubTask> subTasks2 = new ArrayList<>();
+        subTasks2.add(subTask3);
+        subTasks2.add(subTask4);
+        Epic epic2 = new Epic(9,  "NewEpic1", "NewEpic description1", Status.DONE, subTasks2);
+        manager.addEpic(epic2);
+        fileManager.addEpic(epic2);
+        Task task1 = new Task (4,  "nameTask1", "descriptionTask1", Status.NEW);
+        Task task2 = new Task(4,  "nameTask2", "descriptionTask2", Status.DONE);
         manager.addTask(task1);
+        fileManager.addTask(task1);
         manager.addTask(task2);
+        fileManager.addTask(task2);
+        SubTask subTask1 = new SubTask(7,  "SubTask1", "SubTask description1", Status.NEW, 7);
+        SubTask subTask2 = new SubTask(2,  "SubTask2", "SubTask description2", Status.DONE, 1);
         ArrayList<SubTask> subTasks1 = new ArrayList<>();
         subTasks1.add(subTask1);
         subTasks1.add(subTask2);
-        subTasks1.add(subTask3);
-        Epic epic1 = new Epic(88, "ВВВВ", "ВВВВ", subTasks1);
+        Epic epic1 = new Epic(9,  "NewEpic1", "NewEpic description1", Status.DONE, subTasks1);
         manager.addEpic(epic1);
-        Epic epic2 = new Epic(100, "100", "100", new ArrayList<>());
-        manager.addEpic(epic2);
+        fileManager.addEpic(epic1);
 
-        System.out.println("Задачи:");
-        for (Task task : manager.getTasks()) {
-            System.out.println(task);
-        }
-        System.out.println("Эпики:");
-        for (Task epic : manager.getEpics()) {
-            System.out.println(epic);
-        }
+        System.out.println(manager.getTasks());
+        System.out.println(manager.getSubTasks());
+        System.out.println(manager.getEpics());
+        System.out.println(fileManager.getTasks());
+        System.out.println(fileManager.getSubTasks());
+        System.out.println(fileManager.getEpics());
 
-        System.out.println("Подзадачи:");
-        for (Task subtask : manager.getSubTasks()) {
-            System.out.println(subtask);
-        }
+        FileBackedTaskManager restoredManager = fileManager.loadFromFile(new File("file"));
 
-        manager.getTaskById(2);
-        System.out.println("История:");
-        for (Task task : manager.getHistory()) {
-        System.out.println(task);
-        }
-
-        manager.getTaskById(2);
-        manager.getSubTaskById(5);
-        manager.getSubTaskById(4);
-        manager.getTaskById(2);
-        manager.removeTaskById(2);
-        System.out.println("История:");
-        for (Task task : manager.getHistory()) {
-        System.out.println(task);
-      }
-
-        manager.getEicById(3);
-        System.out.println("История:");
-        for (Task task : manager.getHistory()) {
-            System.out.println(task);
-        }
-
-     manager.removeSubTaskById(5);
-     System.out.println("История:");
-     for (Task task : manager.getHistory()) {
-      System.out.println(task);
-     }
-
-     manager.removeEpicById(3);
-     System.out.println("История:");
-     for (Task task : manager.getHistory()) {
-      System.out.println(task);
-     }
-
-        manager.removeEpicById(7);
-        System.out.println("История:");
-        for (Task task : manager.getHistory()) {
-            System.out.println(task);
-        }*/
+        System.out.println(restoredManager.getTasks());
+        System.out.println(restoredManager.getSubTasks());
+        System.out.println(restoredManager.getEpics());*/
     }
 }
 

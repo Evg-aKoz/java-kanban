@@ -9,6 +9,7 @@ public class Task {
     protected String descriptionTask;
     protected Status status;
 
+
     public Task(int idTask, String nameTask, String descriptionTask, Status status) {
         this.idTask = idTask;
         this.nameTask = nameTask;
@@ -44,6 +45,10 @@ public class Task {
         this.status = status;
     }
 
+    public TypeTask getType() {
+        return TypeTask.TASK;
+    }
+
     public int getIdTask() {
         return idTask;
     }
@@ -66,14 +71,39 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "idTask=" + idTask +
-                ", nameTask='" + nameTask + '\'' +
-                ", descriptionTask='" + descriptionTask + '\'' +
-                ", status=" + status +
-                '}';
+        return String.format("%d,%s,%s,%s,%s\n", idTask, getType(), nameTask, descriptionTask, status);
+    }
+
+    public static Task fromString(String value) {
+        String[] parts = value.split(",");
+        if (TypeTask.valueOf(parts[1]).equals(TypeTask.TASK)) {
+            int idTask = Integer.parseInt(parts[0]);
+            String nameTask = parts[2];
+            String descriptionTask = parts[3];
+            Status status = Status.valueOf(parts[4]);
+            return new Task(idTask, nameTask, descriptionTask, status);
+        } else if (TypeTask.valueOf(parts[1]).equals(TypeTask.SUBTASK)) {
+                int idTask = Integer.parseInt(parts[0]);
+                String nameTask = parts[2];
+                String descriptionTask = parts[3];
+                Status status = Status.valueOf(parts[4]);
+                int idEpic = Integer.parseInt(parts[5]);
+                return new SubTask(idTask, nameTask, descriptionTask, status, idEpic);
+        } else if (TypeTask.valueOf(parts[1]).equals(TypeTask.EPIC)) {
+            int idTask = Integer.parseInt(parts[0]);
+            String nameTask = parts[2];
+            String descriptionTask = parts[3];
+            Status status = Status.valueOf(parts[4]);
+            return new Epic(idTask, nameTask, descriptionTask, status);
+        } else {
+            throw new IllegalArgumentException("Неверный формат строки");
+        }
     }
 }
+
+
+
+
 
 
 

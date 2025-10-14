@@ -29,6 +29,11 @@ public class SubTask extends Task {
         super.setIdTask(idTask);
     }
 
+    @Override
+    public TypeTask getType() {
+        return TypeTask.SUBTASK;
+    }
+
     public int getIdEpic() {
         return idEpic;
     }
@@ -39,8 +44,7 @@ public class SubTask extends Task {
 
     @Override
     public String toString() {
-        return "SubTask{" +
-                "idEpic=" + idEpic +
-                "} " + super.toString();
+        return String.format("%d,%s,%s,%s,%s,%d\n",idTask, getType(), nameTask, descriptionTask, status, idEpic);
     }
 }
+
